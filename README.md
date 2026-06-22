@@ -36,16 +36,4 @@ python train_driving_risk.py
 
 依赖：`xgboost scikit-learn pandas joblib`
 
-## 引用
 
-If you use this dataset, please cite:
-
-```
-@misc{driving-risk-synthetic,
-  author = {刘庭伟},
-  title = {Synthetic Driving Risk Dataset},
-  year = {2026},
-  publisher = {GitHub},
-  url = {https://github.com/testii342/driving-risk-dataset}
-}
-```
