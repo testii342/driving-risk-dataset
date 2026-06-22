@@ -28,12 +28,5 @@
 - 1 = 中风险
 - 2 = 高风险
 
-## 训练
-
-```bash
-python train_driving_risk.py
-```
-
-依赖：`xgboost scikit-learn pandas joblib`
 
 
