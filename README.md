@@ -1,0 +1,51 @@
+# Synthetic Driving Risk Dataset
+
+基于物理规律生成的合成驾驶行为数据集，用于驾驶风险评估模型训练。
+
+## 数据集概况
+
+| 项目 | 详情 |
+|------|------|
+| 样本数 | 15,000 |
+| 特征数 | 6 |
+| 风险等级 | 3（低/中/高） |
+| 格式 | CSV |
+
+## 特征说明
+
+| 特征 | 单位 | 说明 |
+|------|------|------|
+| speed | km/h | 车辆瞬时速度 |
+| acceleration | m/s² | 纵向加速度 |
+| brake_force | 0-1 | 归一化刹车力度 |
+| steering_rate | deg/s | 转向角变化率 |
+| following_distance | m | 与前车距离 |
+| blink_frequency | 次/分钟 | 眼动眨眼频率 |
+
+## 标签
+
+- 0 = 低风险
+- 1 = 中风险
+- 2 = 高风险
+
+## 训练
+
+```bash
+python train_driving_risk.py
+```
+
+依赖：`xgboost scikit-learn pandas joblib`
+
+## 引用
+
+If you use this dataset, please cite:
+
+```
+@misc{driving-risk-synthetic,
+  author = {刘庭伟},
+  title = {Synthetic Driving Risk Dataset},
+  year = {2026},
+  publisher = {GitHub},
+  url = {https://github.com/testii342/driving-risk-dataset}
+}
+```
