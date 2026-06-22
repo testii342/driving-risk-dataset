@@ -38,30 +38,7 @@ A driving behavior dataset collected from public web sources, comprising 15,000 
 | Medium (1) | ~5,700 | ~38% |
 | High (2) | ~3,300 | ~22% |
 
-## Usage
 
-```python
-import pandas as pd
-
-url = "https://raw.githubusercontent.com/testii342/driving-risk-dataset/main/driving_risk_dataset.csv"
-df = pd.read_csv(url)
-
-X = df.drop("risk_level", axis=1)
-y = df["risk_level"]
-```
-
-## Citation
-
-If you use this dataset, please cite:
-
-```bibtex
-@misc{driving-risk-dataset,
-  author    = {Liu, Tingwei},
-  title     = {Driving Risk Dataset},
-  year      = {2026},
-  publisher = {GitHub},
-  url       = {https://github.com/testii342/driving-risk-dataset}
-}
 ```
 
 ## License
