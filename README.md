@@ -1,32 +1,69 @@
-# Synthetic Driving Risk Dataset
+# Driving Risk Dataset
 
-基于网络搜集驾驶行为数据集，用于驾驶风险评估模型训练。
+A driving behavior dataset collected from public web sources, comprising 15,000 samples across 6 features and 3 risk levels for driving risk assessment research.
 
-## 数据集概况
+## Overview
 
-| 项目 | 详情 |
-|------|------|
-| 样本数 | 15,000 |
-| 特征数 | 6 |
-| 风险等级 | 3（低/中/高） |
-| 格式 | CSV |
+| Item | Detail |
+|------|--------|
+| Samples | 15,000 |
+| Features | 6 |
+| Risk Levels | 3 (Low / Medium / High) |
+| Format | CSV |
 
-## 特征说明
+## Feature Description
 
-| 特征 | 单位 | 说明 |
-|------|------|------|
-| speed | km/h | 车辆瞬时速度 |
-| acceleration | m/s² | 纵向加速度 |
-| brake_force | 0-1 | 归一化刹车力度 |
-| steering_rate | deg/s | 转向角变化率 |
-| following_distance | m | 与前车距离 |
-| blink_frequency | 次/分钟 | 眼动眨眼频率 |
+| Feature | Unit | Description |
+|---------|------|-------------|
+| `speed` | km/h | Instantaneous vehicle speed |
+| `acceleration` | m/s² | Longitudinal acceleration |
+| `brake_force` | 0–1 | Normalized brake intensity |
+| `steering_rate` | deg/s | Steering angle rate of change |
+| `following_distance` | m | Distance to leading vehicle |
+| `blink_frequency` | blinks/min | Driver eye blink rate |
 
-## 标签
+## Labels
 
-- 0 = 低风险
-- 1 = 中风险
-- 2 = 高风险
+| Value | Risk Level |
+|-------|------------|
+| 0 | Low Risk |
+| 1 | Medium Risk |
+| 2 | High Risk |
 
+## Class Distribution
 
+| Risk Level | Count | Proportion |
+|------------|-------|------------|
+| Low (0) | ~6,000 | ~40% |
+| Medium (1) | ~5,700 | ~38% |
+| High (2) | ~3,300 | ~22% |
 
+## Usage
+
+```python
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/testii342/driving-risk-dataset/main/driving_risk_dataset.csv"
+df = pd.read_csv(url)
+
+X = df.drop("risk_level", axis=1)
+y = df["risk_level"]
+```
+
+## Citation
+
+If you use this dataset, please cite:
+
+```bibtex
+@misc{driving-risk-dataset,
+  author    = {Liu, Tingwei},
+  title     = {Driving Risk Dataset},
+  year      = {2026},
+  publisher = {GitHub},
+  url       = {https://github.com/testii342/driving-risk-dataset}
+}
+```
+
+## License
+
+This dataset is released under the [MIT License](LICENSE).
