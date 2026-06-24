@@ -1,20 +1,31 @@
-## 风险标签划分规则
+# Risk Label Construction
 
-### 低风险（类别0）
-同时满足以下所有条件：
-- 车速 ≤ 80 km/h
-- 刹车力度 ≤ 0.2
-- |加速度| ≤ 2 m/s²
-- 转向角变化率 ≤ 0.5 deg/s
-- 跟车距离 ≥ 30 m
-- 眨眼频率在 12~25 次/分钟
+Labels are assigned via rule-based thresholds on six driving parameters. The logic is deterministic: every sample falls into exactly one of three categories based solely on its feature values.
 
-### 高风险（类别2）
-触发以下任一条件：
-- 车速 ≥ 120 km/h 且 刹车力度 ≥ 0.7
-- 跟车距离 ≤ 10 m 且 车速 ≥ 100 km/h
-- 转向角变化率 ≥ 2.0 deg/s 且 车速 ≥ 80 km/h
-- 眨眼频率 ≥ 35 次/分钟
+## Low Risk (label = 0)
 
-### 中风险（类别1）
-既不满足低风险全部条件、也不触发高风险任一条件的样本。
+All of the following must hold:
+
+| Parameter            | Condition           |
+|----------------------|---------------------|
+| speed                | ≤ 80 km/h           |
+| brake_force          | ≤ 0.2               |
+| acceleration         | \|a\| ≤ 2 m/s²      |
+| steering_rate        | ≤ 0.5 deg/s         |
+| following_distance   | ≥ 30 m              |
+| blink_frequency      | 12 – 25 blinks/min  |
+
+## High Risk (label = 2)
+
+Any one of the following triggers a high-risk assignment:
+
+| Condition                                         |
+|---------------------------------------------------|
+| speed ≥ 120 km/h **and** brake_force ≥ 0.7        |
+| following_distance ≤ 10 m **and** speed ≥ 100 km/h|
+| steering_rate ≥ 2.0 deg/s **and** speed ≥ 80 km/h |
+| blink_frequency ≥ 35 blinks/min                   |
+
+## Medium Risk (label = 1)
+
+Samples that fail the low-risk criteria but do not trigger any high-risk condition. This is the residual class — no explicit thresholds define it.
