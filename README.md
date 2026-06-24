@@ -1,6 +1,6 @@
 # Driving Risk Dataset
 
-A driving behavior dataset collected from public web sources, comprising 15,000 samples across 6 features and 3 risk levels for driving risk assessment research.
+A driving behavior dataset collected from public web sources and carry out integration and simplification, comprising 15,000 samples across 6 features and 3 risk levels for driving risk assessment research.
 
 ## Overview
 
